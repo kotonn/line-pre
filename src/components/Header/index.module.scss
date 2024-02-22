@@ -1,0 +1,11 @@
+@use "../utils" as *;
+@use "../global" as *;
+
+.image1 {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  height: 60px;
+  width: 430px;
+  width: 100%;
+}
