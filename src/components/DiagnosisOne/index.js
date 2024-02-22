@@ -8,7 +8,7 @@ import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
 import { userAnswerState } from "state/userAnswerState";
 
-function Diagnosis1(props) {
+function DiagnosisOne(props) {
   const questions = ["1", "2", "3", "4"];
   const selectAnwerContents = [
     "基準値の2倍以上",
@@ -58,7 +58,7 @@ function Diagnosis1(props) {
 
   console.log(chartData);
   return (
-    <div className={cn(styles.root, props.className, "diagnosis1")}>
+    <div className={cn(styles.root, props.className, "diagnosisone")}>
       <img
         src="/assets/background-image.svg"
         alt=""
@@ -194,8 +194,8 @@ function Diagnosis1(props) {
   );
 }
 
-Diagnosis1.propTypes = {
+DiagnosisOne.propTypes = {
   className: PropTypes.string,
 };
 
-export default withHeader(Diagnosis1);
+export default withHeader(DiagnosisOne);

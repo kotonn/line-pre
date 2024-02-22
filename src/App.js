@@ -3,7 +3,8 @@ import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./fonts.css";
 import FV from "components/FV";
-import Diagnosis from "components/Diagnosis";
+import DiagnosisOne from "components/DiagnosisOne";
+import DiagnosisTwo from "components/DiagnosisTwo";
 
 class App extends Component {
   render() {
@@ -12,7 +13,8 @@ class App extends Component {
         <Router basename={process.env.BASE_PATH}>
           <Routes>
             <Route path="/" element={<FV />} />
-            <Route path="diagnosisone" element={<Diagnosis />} />
+            <Route path="diagnosisone" element={<DiagnosisOne />} />
+            <Route path="diagnosistwo" element={<DiagnosisTwo />} />
           </Routes>
         </Router>
       </RecoilRoot>
