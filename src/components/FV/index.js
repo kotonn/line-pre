@@ -4,13 +4,21 @@ import cn from "classnames";
 import withHeader from "components/withHeader";
 
 import styles from "./index.module.scss";
+import { useNavigate } from "react-router-dom";
 
 function FV(props) {
+  const navigate = useNavigate();
+
+  function handleNextClick() {
+    navigate("/diagnosisone");
+  }
   return (
-    <div
-      className={cn(styles.root, props.className, "fv")}
-      style={{ "--src": `url(${"/assets/background-image.svg"})` }}
-    >
+    <div className={cn(styles.root, props.className, "fv")}>
+      <img
+        src="/assets/background-image.svg"
+        alt=""
+        className={styles.fixed_image}
+      />
       <div className={styles.flex_col}>
         <div className={styles.content_box2}>
           <div className={styles.flex_col1}>
@@ -49,7 +57,7 @@ function FV(props) {
           </div>
         </div>
 
-        <div className={styles.content_box}>
+        <button onClick={handleNextClick} className={styles.content_box}>
           <div className={styles.flex_row1}>
             <div className={styles.flex_col2}>
               <div className={styles.info}>-LET’S START-</div>
@@ -62,7 +70,7 @@ function FV(props) {
               alt=""
             />
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );
