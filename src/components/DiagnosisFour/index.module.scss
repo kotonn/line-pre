@@ -141,12 +141,12 @@
 }
 .highlight1 {
   color: rgb(76, 73, 73);
-  font: 600 13px/1 "Noto Sans JP", Helvetica, Arial, serif;
+  font: 600 16px/1 "Noto Sans JP", Helvetica, Arial, serif;
   letter-spacing: 1.5px;
   width: 100%;
   @include tn {
     align-items: flex-start;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 .flex_row1 {

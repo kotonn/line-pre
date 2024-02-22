@@ -10,9 +10,9 @@ import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
 import { userAnswerState } from "state/userAnswerState";
 
-function DiagnosisTwo(props) {
+function DiagnosisFour(props) {
   const questions = ["1", "2", "3", "4"];
-  const selectAnwerContents = ["4%以上", "2~4%", "1~2%", "1%以下"];
+  const selectAnwerContents = ["5%以上", "3~5%", "1~3%", "1%以下"];
   const navigate = useNavigate();
   const [chartData, setChartData] = useRecoilState(userAnswerState);
   const [lastSelectedAnswer, setLastSelectedAnswer] = useState(null);
@@ -23,9 +23,9 @@ function DiagnosisTwo(props) {
     console.log("save", savedChartData);
     if (savedChartData) {
       const savedData = JSON.parse(savedChartData);
-      if (savedData && savedData.secondAnswer) {
+      if (savedData && savedData.fourthAnswer) {
         setChartData(savedData); // Recoilステートを更新
-        setLastSelectedAnswer(savedData.secondAnswer.lastSelectedAnswer); // ローカルステートを更新
+        setLastSelectedAnswer(savedData.fourthAnswer.lastSelectedAnswer); // ローカルステートを更新
       }
     }
   }, [setChartData]);
@@ -38,7 +38,7 @@ function DiagnosisTwo(props) {
   const handleNextClick = () => {
     const updatedChartData = {
       ...chartData,
-      secondAnswer: { lastSelectedAnswer: lastSelectedAnswer },
+      fourthAnswer: { lastSelectedAnswer: lastSelectedAnswer },
     };
 
     setChartData(updatedChartData);
@@ -48,14 +48,14 @@ function DiagnosisTwo(props) {
       "userAnswerChartData",
       JSON.stringify(updatedChartData)
     );
-    console.log("質問2で保持されているデータ", lastSelectedAnswer);
+    console.log("質問4で保持されているデータ", lastSelectedAnswer);
 
-    navigate("/diagnosisthree");
+    navigate("/diagnosisfive");
   };
 
   console.log(chartData);
   return (
-    <div className={cn(styles.root, props.className, "diagnosistwo")}>
+    <div className={cn(styles.root, props.className, "diagnosisfour")}>
       <img
         src="/assets/background-image.svg"
         alt=""
@@ -70,12 +70,12 @@ function DiagnosisTwo(props) {
               "--src": `url(${"/assets/number-circle-icon.svg"})`,
             }}
           >
-            <h4 className={styles.highlight3}>2/5</h4>
+            <h4 className={styles.highlight3}>4/5</h4>
           </div>
 
           <div className={styles.flex_col1}>
             <h3 className={styles.subtitle}>
-              フィード/リールの保存率は
+              プロフィールアクセス率は
               <br />
               どのくらいですか？
             </h3>
@@ -84,36 +84,33 @@ function DiagnosisTwo(props) {
               <div
                 className={styles.wrapper2}
                 style={{
-                  "--src": `url(${"/assets/comment-icon-keep.svg"})`,
+                  "--src": `url(${"/assets/comment-icon-profile.svg"})`,
                 }}
               >
-                <div className={styles.text}>保存率って？</div>
+                <div className={styles.text}>プロフィールアクセス率って？</div>
               </div>
 
               <div className={styles.flex_col2}>
                 <div className={styles.flex_row}>
                   <div className={styles.rect5} />
                   <h5 className={styles.highlight1}>
-                    投稿を見てくれた人がどのくらい保存してくれたかを表す指標
+                    投稿を見てくれた人がどのくらいプロフィールまで訪れたかを表す指標
                   </h5>
-                </div>
-
-                <div className={styles.flex_row1}>
-                  <div className={styles.rect51} />
-                  <h5 className={styles.highlight11}>「投稿の質」を表します</h5>
                 </div>
 
                 <div className={styles.group}>
                   <div
                     className={styles.wrapper21}
                     style={{
-                      "--src": `url(${"/assets/comment-icon-keep.svg"})`,
+                      "--src": `url(${"/assets/comment-icon-home.svg"})`,
                     }}
                   >
                     <div className={styles.text1}>計算式</div>
                   </div>
 
-                  <h5 className={styles.highlight4}>保存率＝保存数÷リーチ数</h5>
+                  <h5 className={styles.highlight4}>
+                    プロフィールアクセス率＝ プロフィール閲覧数÷リーチ数
+                  </h5>
                 </div>
               </div>
             </div>
@@ -147,8 +144,8 @@ function DiagnosisTwo(props) {
   );
 }
 
-DiagnosisTwo.propTypes = {
+DiagnosisFour.propTypes = {
   className: PropTypes.string,
 };
 
-export default withHeader(DiagnosisTwo);
+export default withHeader(DiagnosisFour);
