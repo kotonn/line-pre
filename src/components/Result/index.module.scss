@@ -252,11 +252,23 @@
     font: 400 12px/1.53 "Noto Sans JP", Helvetica, Arial, serif;
   }
 }
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 .image {
   height: auto;
   margin: 5% 0px 0px;
   width: auto;
+  animation: blink 1.5s infinite; /* 2秒間隔で無限に点滅 */
 }
+
 .wrapper {
   background-color: rgb(79, 190, 158);
   border-radius: 35px 35px 35px 35px;
