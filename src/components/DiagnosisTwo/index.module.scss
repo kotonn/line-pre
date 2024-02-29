@@ -7,6 +7,16 @@
   overflow: auto;
   position: relative;
 }
+@media (min-width: 500px) {
+  .root {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 500 13px/1.3 "Noto Sans JP", Helvetica, Arial, serif;
+  }
+}
 .fixed_image {
   position: fixed;
   right: 0;
@@ -16,20 +26,14 @@
   min-height: 100vh;
   z-index: -1000;
 }
-.image1 {
-  height: 10%;
-  left: 0px;
-  object-fit: contain;
-  object-position: center 0%;
-  position: absolute;
-  top: 0px;
-  width: 100%;
-}
+
 .flex_col {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 122px 16px 59px 24px;
+  gap: 30px 0px;
+  justify-content: center;
+  margin: 30% 5% 10%;
   position: relative;
 }
 .content_box1 {
@@ -217,7 +221,6 @@
   display: flex;
   flex-direction: column;
   gap: 13px 0px;
-  margin: 20px 0px 0px;
   width: 74.29%;
 }
 .wrapper {
@@ -228,6 +231,17 @@
   flex-direction: column;
   width: 100%;
 }
+.wrapper:hover {
+  background-color: rgb(79, 190, 158); /* ホバー時の背景色を青に */
+}
+
+.wrapper:active {
+  transform: scale(1.05); /* アクティブ時にボタンを少し大きく */
+}
+
+.selectedWrapperHover {
+  background-color: rgb(79, 190, 158); /* 選択されたボタンのホバー時の背景色 */
+}
 .highlight {
   color: rgb(76, 73, 73);
   display: flex;
@@ -236,6 +250,13 @@
   letter-spacing: 1.6px;
   margin: 7% auto;
   text-align: center;
+}
+.highlight:hover {
+  color: white;
+}
+
+.selectedHightlightHover {
+  color: white;
 }
 .wrapper1 {
   background-color: rgb(255, 255, 255);
@@ -258,15 +279,14 @@
   border-radius: 5px 5px 5px 5px;
   display: flex;
   flex-direction: column;
-  margin: 30px 0px 0px;
   width: 80%;
 }
 .flex_row2 {
   align-items: center;
   display: flex;
   gap: 0px 10px;
-  justify-content: space-between;
-  margin: 10% 7% 10% auto;
+  justify-content: center;
+  margin: 10% auto 10% auto;
   width: 50%;
 }
 .highlight21 {

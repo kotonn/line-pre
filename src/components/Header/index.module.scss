@@ -6,6 +6,10 @@
   position: fixed;
   flex-direction: column;
   height: 60px;
-  width: 430px;
   width: 100%;
+}
+@media (min-width: 500px) {
+  .image1 {
+    display: none; /* .root要素を非表示にする */
+  }
 }
