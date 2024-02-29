@@ -23,9 +23,9 @@ function DiagnosisThree(props) {
     console.log("save", savedChartData);
     if (savedChartData) {
       const savedData = JSON.parse(savedChartData);
-      if (savedData && savedData.thirdAnswer) {
+      if (savedData && savedData.fifthAnswer) {
         setChartData(savedData); // Recoilステートを更新
-        setLastSelectedAnswer(savedData.thirdAnswer.lastSelectedAnswer); // ローカルステートを更新
+        setLastSelectedAnswer(savedData.fifthAnswer.lastSelectedAnswer); // ローカルステートを更新
       }
     }
   }, [setChartData]);
@@ -38,7 +38,7 @@ function DiagnosisThree(props) {
   const handleNextClick = () => {
     const updatedChartData = {
       ...chartData,
-      thirdAnswer: { lastSelectedAnswer: lastSelectedAnswer },
+      fifthAnswer: { lastSelectedAnswer: lastSelectedAnswer },
     };
 
     setChartData(updatedChartData);

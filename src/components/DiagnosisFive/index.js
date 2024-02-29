@@ -23,9 +23,9 @@ function DiagnosisFive(props) {
     console.log("save", savedChartData);
     if (savedChartData) {
       const savedData = JSON.parse(savedChartData);
-      if (savedData && savedData.fifthAnswer) {
+      if (savedData && savedData.fourthAnswer) {
         setChartData(savedData); // Recoilステートを更新
-        setLastSelectedAnswer(savedData.fifthAnswer.lastSelectedAnswer); // ローカルステートを更新
+        setLastSelectedAnswer(savedData.fourthAnswer.lastSelectedAnswer); // ローカルステートを更新
       }
     }
   }, [setChartData]);
@@ -38,7 +38,7 @@ function DiagnosisFive(props) {
   const handleNextClick = () => {
     const updatedChartData = {
       ...chartData,
-      fifthAnswer: { lastSelectedAnswer: lastSelectedAnswer },
+      fourthAnswer: { lastSelectedAnswer: lastSelectedAnswer },
     };
 
     setChartData(updatedChartData);

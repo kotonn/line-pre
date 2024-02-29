@@ -8,6 +8,7 @@ import DiagnosisTwo from "components/DiagnosisTwo";
 import DiagnosisThree from "components/DiagnosisThree";
 import DiagnosisFour from "components/DiagnosisFour";
 import DiagnosisFive from "components/DiagnosisFive";
+import Result from "components/Result";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route path="diagnosisthree" element={<DiagnosisThree />} />
             <Route path="diagnosisfour" element={<DiagnosisFour />} />
             <Route path="diagnosisfive" element={<DiagnosisFive />} />
+            <Route path="result" element={<Result />} />
           </Routes>
         </Router>
       </RecoilRoot>

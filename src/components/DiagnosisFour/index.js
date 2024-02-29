@@ -23,9 +23,9 @@ function DiagnosisFour(props) {
     console.log("save", savedChartData);
     if (savedChartData) {
       const savedData = JSON.parse(savedChartData);
-      if (savedData && savedData.fourthAnswer) {
+      if (savedData && savedData.thirdAnswer) {
         setChartData(savedData); // Recoilステートを更新
-        setLastSelectedAnswer(savedData.fourthAnswer.lastSelectedAnswer); // ローカルステートを更新
+        setLastSelectedAnswer(savedData.thirdAnswer.lastSelectedAnswer); // ローカルステートを更新
       }
     }
   }, [setChartData]);
@@ -38,7 +38,7 @@ function DiagnosisFour(props) {
   const handleNextClick = () => {
     const updatedChartData = {
       ...chartData,
-      fourthAnswer: { lastSelectedAnswer: lastSelectedAnswer },
+      thirdAnswer: { lastSelectedAnswer: lastSelectedAnswer },
     };
 
     setChartData(updatedChartData);
