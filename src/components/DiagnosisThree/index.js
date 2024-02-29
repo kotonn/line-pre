@@ -11,6 +11,9 @@ import { useState, useEffect } from "react";
 import { userAnswerState } from "state/userAnswerState";
 import { useMediaQuery } from "react-responsive";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function DiagnosisThree(props) {
   const questions = ["1", "2", "3", "4"];
   const selectAnwerContents = ["60%以上", "40~60%", "30~40%", "30%以下"];
@@ -21,6 +24,10 @@ function DiagnosisThree(props) {
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+      delay: 500,
+    });
     // コンポーネントがマウントされたときにローカルストレージからデータを読み込む
     const savedChartData = localStorage.getItem("userAnswerChartData");
     console.log("save", savedChartData);
@@ -73,7 +80,7 @@ function DiagnosisThree(props) {
             className={styles.fixed_image}
           />
 
-          <div className={styles.flex_col}>
+          <div data-aos="fade" className={styles.flex_col}>
             <div className={styles.content_box1}>
               <div
                 className={styles.wrapper3}
@@ -125,7 +132,7 @@ function DiagnosisThree(props) {
                       </div>
 
                       <h5 className={styles.highlight4}>
-                        ホーム率＝フォロワーリーチ数÷投稿÷フォロワー数
+                        ホーム率＝フォロワーリーチ数/投稿÷フォロワー数
                       </h5>
                     </div>
                   </div>

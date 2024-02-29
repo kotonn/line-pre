@@ -11,6 +11,9 @@ import { useState, useEffect } from "react";
 import { userAnswerState } from "state/userAnswerState";
 import { useMediaQuery } from "react-responsive";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function DiagnosisTwo(props) {
   const questions = ["1", "2", "3", "4"];
   const selectAnwerContents = ["4%以上", "2~4%", "1~2%", "1%以下"];
@@ -21,6 +24,10 @@ function DiagnosisTwo(props) {
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+      delay: 500,
+    });
     // コンポーネントがマウントされたときにローカルストレージからデータを読み込む
     const savedChartData = localStorage.getItem("userAnswerChartData");
 
@@ -72,7 +79,7 @@ function DiagnosisTwo(props) {
             className={styles.fixed_image}
           />
 
-          <div className={styles.flex_col}>
+          <div data-aos="fade" className={styles.flex_col}>
             <div className={styles.content_box1}>
               <div
                 className={styles.wrapper3}

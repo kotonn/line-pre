@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./fonts.css";
@@ -9,25 +9,25 @@ import DiagnosisThree from "components/DiagnosisThree";
 import DiagnosisFour from "components/DiagnosisFour";
 import DiagnosisFive from "components/DiagnosisFive";
 import Result from "components/Result";
+import ScrollToTop from "hooks/ScrollToTop";
 
-class App extends Component {
-  render() {
-    return (
-      <RecoilRoot>
-        <Router basename={process.env.BASE_PATH}>
-          <Routes>
-            <Route path="/" element={<FV />} />
-            <Route path="diagnosisone" element={<DiagnosisOne />} />
-            <Route path="diagnosistwo" element={<DiagnosisTwo />} />
-            <Route path="diagnosisthree" element={<DiagnosisThree />} />
-            <Route path="diagnosisfour" element={<DiagnosisFour />} />
-            <Route path="diagnosisfive" element={<DiagnosisFive />} />
-            <Route path="result" element={<Result />} />
-          </Routes>
-        </Router>
-      </RecoilRoot>
-    );
-  }
-}
+const App = () => {
+  return (
+    <RecoilRoot>
+      <Router basename={process.env.BASE_PATH}>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<FV />} />
+          <Route path="diagnosisone" element={<DiagnosisOne />} />
+          <Route path="diagnosistwo" element={<DiagnosisTwo />} />
+          <Route path="diagnosisthree" element={<DiagnosisThree />} />
+          <Route path="diagnosisfour" element={<DiagnosisFour />} />
+          <Route path="diagnosisfive" element={<DiagnosisFive />} />
+          <Route path="result" element={<Result />} />
+        </Routes>
+      </Router>
+    </RecoilRoot>
+  );
+};
 
 export default App;

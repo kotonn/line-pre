@@ -7,6 +7,8 @@ import { Radar, Bar } from "react-chartjs-2";
 import { useRecoilState } from "recoil";
 import { userAnswerState } from "state/userAnswerState";
 import { useMediaQuery } from "react-responsive";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   Chart,
   CategoryScale,
@@ -62,6 +64,10 @@ function Result(props) {
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+      delay: 500,
+    });
     // ローカルストレージからデータの読み込みと検証
     const loadData = () => {
       const savedChartData = localStorage.getItem("userAnswerChartData");
@@ -147,6 +153,10 @@ function Result(props) {
   const radarOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: {
+      duration: 2000, // アニメーションの持続時間を2秒に設定
+      easing: "easeInOutCubic", // アニメーションのイージング関数を設定（オプション）
+    },
     elements: {
       line: {
         borderWidth: 2,
@@ -209,6 +219,10 @@ function Result(props) {
   const barOptions = {
     indexAxis: "y",
     maintainAspectRatio: false,
+    animation: {
+      duration: 2000, // アニメーションの持続時間を2秒に設定
+      easing: "easeInOutCubic", // アニメーションのイージング関数を設定（オプション）
+    },
     scales: {
       x: {
         ticks: {
@@ -237,7 +251,7 @@ function Result(props) {
     <>
       {isMobile && (
         <div className={cn(styles.main, props.className, "result")}>
-          <section className={styles.section1}>
+          <section data-aos="fade" className={styles.section1}>
             <img
               src="/assets/background-image.svg"
               alt=""

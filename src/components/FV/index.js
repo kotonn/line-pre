@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import withHeader from "components/withHeader";
@@ -7,9 +7,19 @@ import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function FV(props) {
   const navigate = useNavigate();
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      delay: 500,
+    });
+  }, []);
 
   function handleNextClick() {
     navigate("/diagnosisone");
@@ -23,7 +33,7 @@ function FV(props) {
             alt=""
             className={styles.fixed_image}
           />
-          <div className={styles.flex_col}>
+          <div data-aos="fade" className={styles.flex_col}>
             <div className={styles.content_box2}>
               <div className={styles.flex_col1}>
                 <div className={styles.chip}>

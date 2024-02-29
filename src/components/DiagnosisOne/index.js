@@ -8,6 +8,8 @@ import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
 import { userAnswerState } from "state/userAnswerState";
 import { useMediaQuery } from "react-responsive";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function DiagnosisOne(props) {
   const questions = ["1", "2", "3", "4"];
@@ -24,6 +26,10 @@ function DiagnosisOne(props) {
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+      delay: 500,
+    });
     // コンポーネントがマウントされたときにローカルストレージからデータを読み込む
     const savedChartData = localStorage.getItem("userAnswerChartData");
     if (savedChartData) {
@@ -73,7 +79,7 @@ function DiagnosisOne(props) {
             alt=""
             className={styles.fixed_image}
           />
-          <div className={styles.flex_col}>
+          <div data-aos="fade" className={styles.flex_col}>
             <div className={styles.content_box3}>
               <div
                 className={styles.wrapper4}
