@@ -95,9 +95,6 @@
   margin: 1px 0px 0px;
   position: relative;
   width: 100%;
-  @include tn {
-    height: 125vw;
-  }
 }
 .wrapper5 {
   background-color: rgb(255, 255, 255);
@@ -132,11 +129,11 @@
   display: flex;
   flex-direction: column;
   gap: 8px 0px;
-  margin: 60% 7% 3%;
+  margin: 1% 7% 6%;
   padding: 19px 20px 11px 17px;
   position: relative;
   @include tn {
-    margin: auto 5% 5%;
+    margin: 1% 7% 10%;
   }
 }
 .info {
@@ -205,6 +202,24 @@
   align-items: center;
   @include tn {
     height: 100%;
+    margin: 25% auto 10%;
+    width: 90%;
+  }
+}
+.wrapper3_bar {
+  width: 90%;
+  height: 10vh;
+  color: rgba(83, 70, 85, 0.847);
+  font: 400 13px/1.53 "Noto Sans JP", Helvetica, Arial, serif;
+  letter-spacing: 1.3px;
+  margin: 25% auto 10%;
+  padding: 0px 0px 0px 0px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include tn {
+    height: 13vh;
     margin: 25% auto 10%;
     width: 90%;
   }

@@ -1,28 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import withHeader from "components/withHeader";
-
 import styles from "./index.module.scss";
-
 import { Radar, Bar } from "react-chartjs-2";
+import { useRecoilState } from "recoil";
+import { userAnswerState } from "state/userAnswerState";
 import {
   Chart,
-  RadialLinearScale,
+  CategoryScale,
+  LinearScale,
+  BarElement,
   PointElement,
   LineElement,
+  RadialLinearScale,
   Filler,
   Tooltip,
   Legend,
 } from "chart.js";
-import { useRecoilState } from "recoil";
-import { useEffect } from "react";
-import { userAnswerState } from "state/userAnswerState";
 
+// 全ての必要なコンポーネントを登録
 Chart.register(
-  RadialLinearScale,
+  CategoryScale,
+  LinearScale,
+  BarElement,
   PointElement,
   LineElement,
+  RadialLinearScale,
   Filler,
   Tooltip,
   Legend
@@ -32,38 +36,38 @@ function Result(props) {
   const [chartData, setChartData] = useRecoilState(userAnswerState);
 
   useEffect(() => {
-    const savedChartData = localStorage.getItem("userAnswerChartData");
-    if (savedChartData) {
-      const parsedData = JSON.parse(savedChartData);
-      // データ形式の確認を追加
-      const isValidData =
-        parsedData &&
-        Object.keys(parsedData).every(
-          (key) =>
-            parsedData[key] !== null &&
-            typeof parsedData[key] === "object" &&
-            "lastSelectedAnswer" in parsedData[key]
-        );
+    // ローカルストレージからデータの読み込みと検証
+    const loadData = () => {
+      const savedChartData = localStorage.getItem("userAnswerChartData");
+      if (!savedChartData) return;
 
-      if (isValidData) {
-        setChartData(parsedData);
-      } else {
-        // ローカルストレージのデータが無効な場合、何らかのエラーハンドリングを行う
-        console.error("Invalid data format in localStorage");
+      try {
+        const parsedData = JSON.parse(savedChartData);
+        const isValidData =
+          parsedData &&
+          Object.values(parsedData).every(
+            (data) => data && "lastSelectedAnswer" in data
+          );
+
+        if (isValidData) {
+          setChartData(parsedData);
+        } else {
+          console.error("Invalid data format in localStorage");
+        }
+      } catch (error) {
+        console.error("Error parsing chart data from localStorage:", error);
       }
-      console.log("Parsed data:", parsedData);
-    }
+    };
+
+    loadData();
   }, [setChartData]);
 
   useEffect(() => {
-    // chartDataが有効なデータを持っているかチェック
+    // データの有効性を確認し、ローカルストレージに保存
     const isValidChartData =
       chartData && Object.values(chartData).every((value) => value !== null);
-
     if (isValidChartData) {
-      // chartDataが更新されるたびにローカルストレージに保存
       localStorage.setItem("userAnswerChartData", JSON.stringify(chartData));
-      console.log("Saved chartData to localStorage:", chartData);
     }
   }, [chartData]);
 
@@ -153,24 +157,42 @@ function Result(props) {
   };
 
   const barData = {
-    labels: ["合計値の偏差値"],
+    labels: ["偏差値"],
     datasets: [
       {
-        label: "偏差値",
+        // labelプロパティを削除するか、空文字に設定して非表示に
         data: [deviationValue],
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
+        backgroundColor: "rgba(251, 216, 129, 0.7)",
+        borderColor: "rgba(249, 210, 99, 1)",
+        barThickness: 20, // バーの幅を指定する（ピクセルまたは比率）
       },
     ],
   };
 
   const barOptions = {
     indexAxis: "y",
+    maintainAspectRatio: false,
     scales: {
       x: {
+        ticks: {
+          font: {
+            size: 9,
+          },
+        },
         min: 0,
         max: 100,
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 9,
+          },
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false, // datasetsのlabelを非表示に
       },
     },
   };
@@ -208,7 +230,11 @@ function Result(props) {
                 <h5 className={styles.highlight}>あなたの運用偏差値</h5>
               </div>
             </div>
-            {/* <Bar data={barData} options={barOptions} /> */}
+
+            <div className={styles.wrapper3_bar}>
+              <Bar data={barData} options={barOptions} />
+            </div>
+
             <article className={styles.content_box5}>
               <div className={styles.info}>【熟練度】</div>
               <p className={styles.desc}>
