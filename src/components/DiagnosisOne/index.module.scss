@@ -217,12 +217,10 @@
   width: 100%;
   transition: transform 0.2s, background-color 0.2s;
 }
-.btn:hover {
-  background-color: rgb(79, 190, 158); /* ホバー時の背景色を青に */
-}
 
 .btn:active {
   transform: scale(1.05); /* アクティブ時にボタンを少し大きく */
+  background-color: rgb(79, 190, 158); /* ホバー時の背景色を青に */
 }
 
 .selectedBtnHover {
