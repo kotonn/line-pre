@@ -72,10 +72,10 @@
 .highlight3 {
   color: rgb(76, 73, 73);
   display: flex;
-  font: 400 18px/1 "Alata", Helvetica, Arial, serif;
+  font: 400 16px/1 "Alata", Helvetica, Arial, serif;
   justify-content: center;
   letter-spacing: 2.7px;
-  margin: 26px 14.5px 26px 15.5px;
+  margin: 29px 14px 26px 18px;
   text-align: center;
   @include tn {
     align-items: flex-start;
