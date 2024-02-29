@@ -181,7 +181,7 @@ function Result(props) {
         },
         pointLabels: {
           font: {
-            size: 8,
+            size: 10,
           },
         },
       },
@@ -222,7 +222,7 @@ function Result(props) {
       y: {
         ticks: {
           font: {
-            size: 9,
+            size: 12,
           },
         },
       },
