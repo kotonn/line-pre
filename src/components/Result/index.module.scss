@@ -278,7 +278,7 @@
   width: 85%;
 }
 .wrapper:hover {
-  background-color: blue;
+  background-color: white;
 }
 .wrapper1 {
   color: rgb(255, 255, 255);
@@ -293,4 +293,8 @@
     align-items: flex-start;
     font-size: 12px;
   }
+}
+
+.wrapper1:hover {
+  color: black;
 }
