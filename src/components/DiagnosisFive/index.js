@@ -15,7 +15,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function DiagnosisFive(props) {
-  const questions = ["1", "2", "3", "4"];
+  const questions = ["4", "3", "2", "1"];
   const selectAnwerContents = ["8%以上", "6~8%", "4~6%", "4%以下"];
   const navigate = useNavigate();
   const [chartData, setChartData] = useRecoilState(userAnswerState);
@@ -141,14 +141,14 @@ function DiagnosisFive(props) {
                   key={index}
                   onClick={() => selectAnswer(question)}
                   className={`${styles.wrapper} ${
-                    lastSelectedAnswer === index + 1
+                    lastSelectedAnswer === Number(question)
                       ? styles.selectedWrapperHover
                       : ""
                   }`}
                 >
                   <h5
                     className={`${styles.highlight} ${
-                      lastSelectedAnswer === index + 1
+                      lastSelectedAnswer === Number(question)
                         ? styles.selectedHightlightHover
                         : ""
                     }`}

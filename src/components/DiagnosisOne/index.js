@@ -12,7 +12,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function DiagnosisOne(props) {
-  const questions = ["1", "2", "3", "4"];
+  const questions = ["4", "3", "2", "1"];
   const selectAnwerContents = [
     "基準値の2倍以上",
     "基準値くらい",
@@ -188,14 +188,14 @@ function DiagnosisOne(props) {
                   key={index}
                   onClick={() => selectAnswer(question)}
                   className={`${styles.btn} ${
-                    lastSelectedAnswer === index + 1
+                    lastSelectedAnswer === Number(question)
                       ? styles.selectedBtnHover
                       : ""
                   }`}
                 >
                   <h5
                     className={`${styles.highlight} ${
-                      lastSelectedAnswer === index + 1
+                      lastSelectedAnswer === Number(question)
                         ? styles.selectedHightlightHover
                         : ""
                     }`}
