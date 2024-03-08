@@ -9,6 +9,8 @@ import { useMediaQuery } from "react-responsive";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import TwitterCard from "components/TwitterCard/TwitterCard";
+
 function FV(props) {
   const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
@@ -24,6 +26,11 @@ function FV(props) {
   }
   return (
     <>
+      <TwitterCard
+        title="アカウント診断"
+        description="知らない内に抱えてしまっているアカウントの課題を見つけに行きましょう"
+        imageUrl="https://sakiyomi-line.vercel.app/assets/twitter-card.jpg"
+      />
       <div className={cn(styles.root, props.className, "fv")}>
         {isMobile ? (
           <img
