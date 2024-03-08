@@ -10,11 +10,13 @@ import DiagnosisFour from "components/DiagnosisFour";
 import DiagnosisFive from "components/DiagnosisFive";
 import Result from "components/Result";
 import ScrollToTop from "hooks/ScrollToTop";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   return (
     <RecoilRoot>
       <Router basename={process.env.BASE_PATH}>
+        <Analytics />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<FV />} />
