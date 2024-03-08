@@ -6,7 +6,11 @@
   flex-direction: column;
   overflow: auto;
   position: relative;
+  justify-content: center; /* 垂直方向の中央揃え */
+  align-items: center; /* 水平方向の中央揃え */
+  height: 100vh; /* ビューポートの高さをフルに使う */
 }
+
 @media (min-width: 501px) {
   .root {
     max-width: 1000px;
